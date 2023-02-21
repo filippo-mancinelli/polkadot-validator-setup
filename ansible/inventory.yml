@@ -3,13 +3,13 @@
 # Validator 0
 [validator_0]
 #🦜dotsamastake_ksm1🦜
-#103.72.79.202
+#103.72.79.202 ansible_port=7822
 
 #🦜dotsamastake_ksm2🦜
-217.174.244.104
+217.174.244.104 
 
 [validator_0:vars]
-node_name='🦜dotsamastake_ksm1🦜'
+node_name='🦜dotsamastake_ksm2🦜'
 
 # ## Group all nodes
 [validator:children]
