@@ -2,51 +2,36 @@
 
 # Validator 0
 [validator_0]
-147.75.76.65
+#🦜dotsamastake_ksm1🦜
+#103.72.79.202
 
-# NOTE: optional variables can just be removed.
+#🦜dotsamastake_ksm2🦜
+217.174.244.104
+
 [validator_0:vars]
-ansible_user=alice
-# Set an individual node name (optional)
-node_name='Alice_Validator'
-# Setup one or multiple telemetry endpoints (optional)
-telemetry_url='wss://telemetry.polkadot.io/submit/,wss://telemetry-backend.w3f.community/submit'
-# Only log specify levels, e.g. warnings (optional)
-logging_filter='sync=warn,afg=warn,babe=warn'
-# Location for database, keys, etc (optional)
-#base_path='/mnt/volume'
-# Setup a nginx reverse proxy in front of the binary (optional). Disabled by default.
-enable_reverse_proxy = false
-# Any additional flags passed on to the 'polkadot' binary (optional)
-additional_flags = '--no-prometheus --no-mdns'
-
-# Validator 1
-[validator_1]
-162.12.35.55
-
-[validator_1:vars]
-ansible_user=bob
-telemetry_url=wss://telemetry.polkadot.io/submit/
-logging_filter='sync=warn,afg=warn,babe=warn'
+node_name='🦜dotsamastake_ksm1🦜'
 
 # ## Group all nodes
 [validator:children]
 validator_0
-validator_1
 
 # Common variables
 [all:vars]
 # Project name. Will be used as a prefix for the auto-generated node names
 # if an individual `nodeName` is not specified.
-project=alice-in-wonderland
+project=dotsamastake.io
+ansible_user=ansible
+telemetry_url='wss://telemetry-backend.w3f.community/submit'
+logging_filter='sync=warn,afg=warn,babe=warn'
+additional_flags = '--no-prometheus --no-mdns'
 
 # Can be left as is.
 ansible_ssh_common_args='-o StrictHostKeyChecking=no -o ConnectTimeout=15'
 build_dir=$HOME/.config/polkadot-secure-validator/build/w3f/ansible
 
 # Specify which `polkadot` binary to install. Checksum is verified during execution.
-polkadot_binary_url='https://github.com/paritytech/polkadot/releases/download/v0.9.1/polkadot'
-polkadot_binary_checksum='sha256:00185307376ca0bacf28504e76d4c61ebf84abfba6c31780c9966325add83e1e'
+polkadot_binary_url='https://github.com/paritytech/polkadot/releases/download/v0.9.38/polkadot'
+polkadot_binary_checksum='sha256:314339ac51f0fba3b3dba2cb7765fb44b3834ed459d6700df14751c01f4cd8a8'
 
 # Specify the chain/network.
 #
@@ -61,8 +46,8 @@ polkadot_binary_checksum='sha256:00185307376ca0bacf28504e76d4c61ebf84abfba6c3178
 # chain=kusama
 # polkadot_network_id=ksmcc3
 # ```
-polkadot_network_id=polkadot
-chain=polkadot
+polkadot_network_id=ksmcc3
+chain=kusama
 
 # Nginx authentication settings (for Prometheus).
 nginx_user='prometheus'
@@ -82,5 +67,5 @@ polkadot_restart_month='2'
 polkadot_restart_weekday='1'
 
 # Optional: Restore the chain db from a .7z snapshot
-polkadot_db_snapshot_url='https://ksm-rocksdb.polkashots.io/kusama-6658753.RocksDb.7z'
-polkadot_db_snapshot_checksum='sha256:4f61a99e4b00acb335aff52f2383880d53b30617c0ae67ac47c611e7bf6971ff'
+# polkadot_db_snapshot_url='https://ksm-rocksdb.polkashots.io/kusama-14174795.RocksDb.tar.lz4'
+# polkadot_db_snapshot_checksum='sha256:4f61a99e4b00acb335aff52f2383880d53b30617c0ae67ac47c611e7bf6971ff'

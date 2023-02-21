@@ -39,15 +39,12 @@ echo -n ">> Testing connectivity to hosts... "
 out=$((ansible all -i ${INVENTORY} -m ping) 2>&1)
 handle_error "$out"
 
-echo "Sudo password for remote servers:"
-read -s SUDO_PW
-
 echo -n ">> Testing sudo access... "
-out=$((ansible all -i ${INVENTORY} -m ping --become --extra-vars "ansible_become_pass='$SUDO_PW'") 2>&1)
+out=$((ansible all -i ${INVENTORY} -m ping --become --extra-vars "ansible_become_pass=pondsama") 2>&1)
 handle_error "$out"
 
 echo ">> Executing Ansible Playbook..."
 
-ansible-playbook -i ${INVENTORY} ${ANSIBLE_FILES_DIR}/main.yml --become --extra-vars "ansible_become_pass='$SUDO_PW'"
+ansible-playbook -i ${INVENTORY} ${ANSIBLE_FILES_DIR}/main.yml --become --extra-vars "ansible_become_pass=pondsama"
 
 echo ">> Done!"
